@@ -17,8 +17,14 @@ class Login {
     }
 
     getOffline() {
+        let offlineBTN = document.querySelector('.offline');
         document.querySelector('.login-text p').innerHTML = 'Un compte Minecraft ou un pseudo est requis pour jouer.';
         document.querySelector('.offline').style.display = 'block';
+
+        offlineBTN.addEventListener('click', () => {
+            document.querySelector('.tab-login').style.display = 'none';
+            document.querySelector('.tab-login-offline').style.display = 'block';
+        })
     }
 }
 export default Login;
