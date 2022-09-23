@@ -482,7 +482,8 @@ ___
 
 ### Le launcher supporte t-il l'autoconnect ?
 ___
-- Nous sommes contre l'autoconnect nous ne fourniront donc pas de support pour cette fonctionnalité par ailleurs il est possible de l'activer en modifiant les arguments de lancement du jeu dans la config sur le serveur web (game_args).
+- Nous sommes contre l'autoconnect nous ne fourniront donc pas de support pour cette fonctionnalité.
+- Nous conseillons en revanche d'utiliser un mod permettant d'ajouter un bouton pour se connecter.
 
 ### Pourquoi les news ne marchent pas ?
 ___
