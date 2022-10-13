@@ -1,8 +1,8 @@
 {
     "name": "Selvania-Launcher",
     "preductname": "PokeBrasil Launcher",
-    "version": "1.0.7",
-    "description": "Launcher Mincraft custom",
+    "version": "1.0.8",
+    "description": "Launcher do Pokémon Brasil",
     "main": "src/app.js",
     "author": "Luuxis",
     "url": "https://launcher.pokebrasil.net",
