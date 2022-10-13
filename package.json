@@ -5,7 +5,7 @@
     "description": "Launcher Mincraft custom",
     "main": "src/app.js",
     "author": "Luuxis",
-    "url": "http://launcher.pokebrasil.net",
+    "url": "http://launcher.pokebrasil.net/files",
     "engines": {
         "node": "16.x.x"
     },
