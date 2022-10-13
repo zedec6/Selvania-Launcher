@@ -26,7 +26,7 @@ function createWindow() {
         width: 400,
         height: 500,
         resizable: false,
-        icon: `./src/assets/images/icon.${os.platform() === "win32" ? "ico" : "png"}`,
+        icon: `./src/assets/images/icone.${os.platform() === "win32" ? "ico" : "png"}`,
         transparent: os.platform() === 'win32',
         frame: false,
         show: false,
