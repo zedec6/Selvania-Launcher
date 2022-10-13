@@ -24,7 +24,7 @@ class Splash {
         let splashes = [
             { "message": "Torne-se um treinador", "author": "PokeBrasil" },
             { "message": "Boa sorte em sua aventura!", "author": "PokeBrasil" },
-            { "message": "Lembre-se de participar de nosso Discord.", "author": "PokeBrasil" }
+            { "message": "Launcher em desenvolvimento", "author": "PokeBrasil" }
         ]
         let splash = splashes[Math.floor(Math.random() * splashes.length)];
         this.splashMessage.textContent = splash.message;
@@ -44,7 +44,7 @@ class Splash {
 
     async checkUpdate() {
         if (dev) return this.startLauncher();
-        this.setStatus(`checando atualizações...`);
+        this.setStatus(`Checando atualizações...`);
 
         ipcRenderer.invoke('update-app').then(err => {
             if (err.error) {
@@ -74,7 +74,7 @@ class Splash {
             this.startLauncher();
         }).catch(e => {
             console.error(e);
-            return this.shutdown("Aucune connexion internet détectée,<br>veuillez réessayer ultérieurement.");
+            return this.shutdown("Nenhuma conexão com a Internet detectada.<br>tente novamente mais tarde.");
         })
     }
 
