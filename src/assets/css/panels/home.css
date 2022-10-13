@@ -3,6 +3,10 @@
     --main-color-disabled: #8235c0;
     --red-color: #c50000;
 }
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 .bottom-bar-home {
     position: fixed;
     bottom: 0;

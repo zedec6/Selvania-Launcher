@@ -1,5 +1,8 @@
 /* Poppins */
-
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 @font-face {
     font-family: 'Montserrat';
     font-style: normal;

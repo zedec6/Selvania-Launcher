@@ -2,6 +2,10 @@
     --main-color: #9d2ffa;
     --main-color-disabled: #8235c0;
 }
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 .tabs-settings-btn {
     position: fixed;
     bottom: 0;
