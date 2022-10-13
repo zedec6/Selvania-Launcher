@@ -1,8 +1,12 @@
+:root{
+    --main-color: #9d2ffa;
+    --main-color-disabled: #8235c0;
+}
 .tabs-settings-btn {
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 70px;
+    height: 90px;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
     background: #00000080;
@@ -13,32 +17,59 @@
 .tab-btn-css {
     border-radius: 23px;
     width: 160px;
-    height: 37px;
+    height: 45px;
     margin: auto 30px;
-    background: #00bd7a;
-    border: 4px solid #00bd7a;
-    font: normal normal bold 20px/25px Poppins;
+    border-radius: 15px;
+    margin: 25px auto;
+    background-color: var(--main-color);
+    border-top-left-radius: 35px 100%;
+    border-top-right-radius: 35px 100%;
+    border-bottom-left-radius: 35px 100%;
+    border-bottom-right-radius: 35px 100%;
+    box-shadow: 0 0 8px 1px #ffffffab;
+    transition: .5s;
+    padding: 0px 20px!important;
+    text-transform: uppercase;
+    border: none;
+    color: #121212;
+    font: normal normal bold 15px/20px Montserrat;
     cursor: pointer;
-    box-shadow: 0 0 5px #00bd7a;
     outline: none;
+    
 }
 
 .tab-btn-css:hover {
-    background: #006e47;
-    box-shadow: 0 0 5px #006e47;
-    border: 4px solid #006e47;
+    color: #fff!important;
+    border-top-left-radius: 25px 100%;
+    border-top-right-radius: 25px 100%;
+    border-bottom-left-radius: 25px 100%;
+    border-bottom-right-radius: 25px 100%;
+    box-shadow: 0 0 8px 1px #ffffffad;
+    animation: ease-in-out;
+    transform: scale(1.06);
 }
 
 .active-tab-btn {
-    background: #006e47;
-    border: 4px solid #bd5d26;
-    box-shadow: 0 0 5px #bd5d26;
+    color: #fff!important;
+    background-color: var(--main-color-disabled);
+    border-top-left-radius: 25px 100%;
+    border-top-right-radius: 25px 100%;
+    border-bottom-left-radius: 25px 100%;
+    border-bottom-right-radius: 25px 100%;
+    box-shadow: 0 0 8px 1px #7c7c7cad;
+    transition: .5s;
+    transform: scale(1.03);
 }
 
 .active-tab-btn:hover {
-    background: #006e47;
-    border: 4px solid #bd5d26;
-    box-shadow: 0 0 5px #bd5d26;
+    color: #fff!important;
+    border-top-left-radius: 25px 100%;
+    border-top-right-radius: 25px 100%;
+    border-bottom-left-radius: 25px 100%;
+    border-bottom-right-radius: 25px 100%;
+    box-shadow: 0 0 8px 1px #ffffffad;
+    animation: ease-in-out;
+    transform: scale(1.06);
 }
 
 .tabs-settings-content {
@@ -62,13 +93,14 @@
 
 .information {
     padding: 0 40px;
-    font: normal normal normal 16px/25px Poppins;
+    font: normal normal normal 16px/25px Montserrat;
     color: #F1F1F1;
 }
 
 .title-settings {
     text-align: center;
-    font: normal normal bold 20px/25px Poppins;
+    font: normal normal bold 20px/25px Montserrat;
+    text-transform: uppercase;
     color: #F1F1F1;
     margin: 2% 0;
 }
@@ -103,17 +135,35 @@
  ******************************************************************************/
 
 .add-account {
-    width: 80%;
+    width: 7%;
     height: 10%;
     border: none;
     border-radius: 15px;
-    font: normal normal bold 30px/40px Poppins;
+    font: normal normal bold 30px/40px Montserrat;
     color: #D1D1D1;
-    background-color: #303030;
-    box-shadow: 1px 2px 5px #585858;
+    background-color: var(--main-color-disabled);
+    border-top-left-radius: 35px 100%;
+    border-top-right-radius: 35px 100%;
+    border-bottom-left-radius: 35px 100%;
+    border-bottom-right-radius: 35px 100%;
+    box-shadow: 0 0 8px 1px #ffffffab;
     margin: 20px 0;
     margin-bottom: 10px;
+    transition: all .5s;
 }
+
+.add-account:hover {
+    color: #fff!important;
+    border-top-left-radius: 25px 100%;
+    border-top-right-radius: 25px 100%;
+    border-bottom-left-radius: 25px 100%;
+    border-bottom-right-radius: 25px 100%;
+    box-shadow: 0 0 8px 1px #ffffffad;
+    animation: ease-in-out;
+    cursor: pointer;
+    transform: scale(1.06);
+}
+
 
 .accounts {
     display: contents;
@@ -122,21 +172,31 @@
 
 .account {
     display: inline-block;
-    background: #00bd7a;
-    box-shadow: 0 0 5px #006e47;
-    border: 4px solid #00bd7a;
-    font: normal normal bold 30px/40px Poppins;
+    background: var(--main-color);
+    border-top-left-radius: 35px 100%;
+    border-top-right-radius: 35px 100%;
+    border-bottom-left-radius: 35px 100%;
+    border-bottom-right-radius: 35px 100%;
+    box-shadow: 0 0 8px 1px #ffffffab;
+    font: normal normal bold 30px/40px Montserrat;
     width: 500px;
     height: 100px;
     margin: 1% 2%;
     border-radius: 100px;
     text-align: start;
+    transition: all .5s;
 }
 
 .account:hover {
-    background: #006e47;
-    box-shadow: 0 0 5px #006e47;
-    border: 4px solid #006e47;
+    color: #fff!important;
+    border-top-left-radius: 25px 100%;
+    border-top-right-radius: 25px 100%;
+    border-bottom-left-radius: 25px 100%;
+    border-bottom-right-radius: 25px 100%;
+    box-shadow: 0 0 8px 1px #ffffffad;
+    animation: ease-in-out;
+    cursor: pointer;    
+    transform: scale(1.06);
 }
 
 .account-image {
@@ -150,7 +210,7 @@
 .account-name {
     margin: 0 100px;
     margin-top: 15px;
-    font: normal normal bold 24px/35px Poppins;
+    font: normal normal bold 24px/35px Montserrat;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -160,7 +220,7 @@
 
 .account-uuid {
     margin: 0 100px;
-    font: normal normal normal 18px/27px Poppins;
+    font: normal normal normal 18px/27px Montserrat;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -179,6 +239,12 @@
     border-radius: 100%;
     cursor: pointer;
     text-align: center;
+    transition: all .5s;
+}
+
+.account-delete:hover {
+    box-shadow: 0 0 5px #802222c7;
+    animation: ease-in-out;
 }
 
 .icon-account-delete-btn {
@@ -188,15 +254,26 @@
 }
 
 .active-account {
-    background: #006e47;
-    border: 4px solid #bd5d26;
-    box-shadow: 0 0 5px #bd5d26;
+    color: #fff!important;
+    border-top-left-radius: 25px 100%;
+    border-top-right-radius: 25px 100%;
+    border-bottom-left-radius: 25px 100%;
+    border-bottom-right-radius: 25px 100%;
+    box-shadow: 0 0 8px 1px #686868ad;
+    animation: ease-in-out;
+    transform: scale(1.03);
 }
 
 .active-account:hover {
-    background: #006e47;
-    border: 4px solid #bd5d26;
-    box-shadow: 0 0 5px #bd5d26;
+    color: #fff!important;
+    border-top-left-radius: 25px 100%;
+    border-top-right-radius: 25px 100%;
+    border-bottom-left-radius: 25px 100%;
+    border-bottom-right-radius: 25px 100%;
+    box-shadow: 0 0 8px 1px #ffffffad;
+    animation: ease-in-out;
+    transform: scale(1.06);
+    transition: all .5s;
 }
 
 
@@ -238,7 +315,7 @@
     width: 20px;
     height: 10px;
     background: #F1F1F1;
-    border: 4px solid #00bd7a;
+    border: 4px solid var(--main-color);
     transition: background-color .2s, border .2s;
     border-radius: 18px;
     cursor: pointer;
@@ -247,8 +324,8 @@
 .slider-touch-left span:after,
 .slider-touch-right span:after {
     content: attr(value);
-    color: #00bd7a;
-    font: normal normal bold 12px/18px Poppins;
+    color: var(--main-color);
+    font: normal normal bold 12px/18px Montserrat;
     white-space: nowrap;
     pointer-events: none;
     position: absolute;
@@ -275,20 +352,20 @@
     display: block;
     height: 100%;
     width: 0%;
-    background: #00bd7a;
+    background: var(--main-color);
     transition: background-color .2s;
 }
 
 .ram-info {
     display: flex;
     align-items: center;
-    font: normal normal bold 15px/25px Poppins;
+    font: normal normal bold 15px/25px Montserrat;
     color: #F1F1F1F1;
 }
 
 .path {
     min-width: 50%;
-    font: normal normal normal 13px/20px Poppins;
+    font: normal normal normal 13px/20px Montserrat;
     border-radius: 18px;
     padding: 8px 16px;
     margin: 0 40px;
@@ -302,10 +379,10 @@
 }
 
 .path-button {
-    font: normal normal bold 13px/20px Poppins;
+    font: normal normal bold 13px/20px Montserrat;
     border-radius: 18px;
     padding: 8px 30px;
-    background-color: #00bd7a;
+    background-color: var(--main-color);
     cursor: pointer;
     margin-left: 20px;
     transition: color .2s, background-color .2s;
@@ -318,10 +395,10 @@
 }
 
 .path-button-reset {
-    font: normal normal bold 13px/20px Poppins;
+    font: normal normal bold 13px/20px Montserrat;
     border-radius: 18px;
     padding: 8px 30px;
-    background-color: #00bd7a;
+    background-color: var(--main-color);
     cursor: pointer;
     margin-left: 20px;
     transition: color .2s, background-color .2s;
@@ -340,7 +417,7 @@
 
 .args-settings {
     min-width: 50%;
-    font: normal normal normal 13px/20px Poppins;
+    font: normal normal normal 13px/20px Montserrat;
     border-radius: 18px;
     padding: 8px 16px;
     margin: 0 40px;
@@ -374,13 +451,13 @@
 
 .input-settings {
     text-align: center;
-    background: #1f1f1f;
+    background: #000;
     border: none;
     outline: none;
     border-radius: 40px;
     font-size: 20px;
     width: 100px;
-    color: #F1F1F1F1;
+    color: #fff;
 }
 
 .size-cross {
@@ -414,20 +491,21 @@
     font-size: 24px;
     pointer-events: none;
     transform: rotate(180deg);
-    color: black;
+    color: #000;
     transition: color .2s;
     pointer-events: none;
 }
 
 .select {
-    border-radius: 40px;
-    background-color: #00bd7a;
-    font: normal normal normal 12px/18px Poppins;
+    border-radius: 15px;
+    background-color: var(--main-color);
+    font: normal normal normal 12px/18px Montserrat;
     transition: color .2s, box-shadow .2s;
     border: none;
     outline: none;
     appearance: none;
 }
+
 
 
 /*******************************************************************************
@@ -458,11 +536,12 @@
     z-index: 2;
     border-radius: 7px;
     transition: all .2s;
+    box-shadow: 0px 0px 0px 1px #fff inset;
     background-color: #FFFFFF;
 }
 
 .checkbox-settings:checked+label {
-    background-color: #00bd7a;
+    background-color: var(--main-color);
 }
 
 .checkround {
@@ -472,4 +551,10 @@
 .checkbox-settings+label {
     display: inline-block;
     margin-right: 8px;
+}
+.pcheckround {
+    display: inline-block;
+    position: relative;
+    font: normal normal bold 12px Montserrat;
+    color: #fff;
 }

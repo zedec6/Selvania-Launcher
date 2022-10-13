@@ -1,3 +1,7 @@
+:root{
+    --main-color: #9d2ffa;
+    --main-color-disabled: #8235c0;
+}
 .login-card {
     position: absolute;
     top: 52%;
@@ -6,7 +10,7 @@
     width: 35%;
     background: #121212;
     padding: 20px;
-    font: normal normal bold 19px/29px Poppins;
+    font: normal normal bold 19px/29px Montserrat;
     color: #E1E1E1;
     border-radius: 15px;
     text-align: center;
@@ -22,27 +26,59 @@
     border: none;
     margin: 2% 0;
     height: 2em;
-    background-color: #00bd7a;
-    box-shadow: 0 0 5px #00bd7a;
+    background-color: var(--main-color);
+    border-top-left-radius: 35px 100%;
+    border-top-right-radius: 35px 100%;
+    border-bottom-left-radius: 35px 100%;
+    border-bottom-right-radius: 35px 100%;
+    box-shadow: 0 0 8px 1px #ffffff33;
+    padding: 0px 20px!important;
+    border-bottom: 3px solid rgba(0,0,0,0.2);
     color: #121212;
-    font: normal normal bold 19px/29px Poppins;
+    font: normal normal bold 19px/29px Montserrat;
+    text-transform: uppercase;
     cursor: pointer;
+    transition: .5s;
 }
 
 .login-type-btn:hover {
-    background-color: #006e47;
-    box-shadow: 0 0 5px #006e47;
+    color: #fff!important;
+    border-top-left-radius: 25px 100%;
+    border-top-right-radius: 25px 100%;
+    border-bottom-left-radius: 25px 100%;
+    border-bottom-right-radius: 25px 100%;
+    box-shadow: 0 0 8px 1px #ffffffad;
+    animation: ease-in-out;
+    transform: scale(1.06);
 }
 
 .login-type-btn:disabled {
-    background-color: #00bd7a;
-    box-shadow: 0 0 5px #00bd7a;
-    cursor: default;
+    border-radius: 15px;
+    border: none;
+    margin: 2% 0;
+    height: 2em;
+    background-color: var(--main-color-disabled);
+    border-top-left-radius: 35px 100%;
+    border-top-right-radius: 35px 100%;
+    border-bottom-left-radius: 35px 100%;
+    border-bottom-right-radius: 35px 100%;
+    box-shadow: 0 0 8px 1px #ffffff33;
+    padding: 0px 20px!important;
+    border-bottom: 3px solid rgba(0,0,0,0.2);
+    color: #121212;
+    font: normal normal bold 19px/29px Poppins;
+    cursor: pointer;
+    transition: .5s;
 }
 
 .login-type-btn:disabled:hover {
-    background-color: #00bd7a;
-    box-shadow: 0 0 5px #00bd7a;
+    color: #fff!important;
+    border-top-left-radius: 25px 100%;
+    border-top-right-radius: 25px 100%;
+    border-bottom-left-radius: 25px 100%;
+    border-bottom-right-radius: 25px 100%;
+    box-shadow: 0 0 8px 1px #ffffffad;
+    transform: scale(1.06)
 }
 
 .login-card-mojang {
@@ -53,7 +89,7 @@
     width: 35%;
     background: #121212;
     padding: 0 20px;
-    font: normal normal bold 19px/29px Poppins;
+    font: normal normal bold 19px/29px Montserrat;
     color: #E1E1E1;
     border-radius: 15px;
     display: none;
@@ -94,23 +130,36 @@
     border: none;
     margin: 2% 0;
     height: 2em;
-    background-color: #00bd7a;
-    box-shadow: 0 0 5px #00bd7a;
+    background-color: var(--main-color);
+    border-top-left-radius: 35px 100%;
+    border-top-right-radius: 35px 100%;
+    border-bottom-left-radius: 35px 100%;
+    border-bottom-right-radius: 35px 100%;
+    box-shadow: 0 0 8px 1px #ffffff33;
+    padding: 0px 20px!important;
+    border-bottom: 3px solid rgba(0,0,0,0.2);
     color: #121212;
-    font: normal normal bold 19px/29px Poppins;
+    font: normal normal bold 19px/29px Montserrat;
     cursor: pointer;
+    text-transform: uppercase;
+    transition: .5s;
 }
 
 .login-btn:hover {
-    background-color: #006e47;
-    box-shadow: 0 0 5px #006e47;
+    color: #fff!important;
+    border-top-left-radius: 25px 100%;
+    border-top-right-radius: 25px 100%;
+    border-bottom-left-radius: 25px 100%;
+    border-bottom-right-radius: 25px 100%;
+    box-shadow: 0 0 8px 1px #ffffffad;
+    transform: scale(1.06);
 }
 
 .cancel {
     border: none;
     background-color: #ffffff00;
     color: #F1F1F1;
-    font: normal normal bold 19px/29px Poppins;
+    font: normal normal bold 19px/29px Montserrat;
     cursor: pointer;
 }
 

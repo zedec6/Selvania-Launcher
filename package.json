@@ -1,7 +1,7 @@
 {
-    "name": "Selvania-Launcher",
+    "name": "PokeBrasil-Launcher",
     "preductname": "PokeBrasil Launcher",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "Launcher do Pokémon Brasil",
     "main": "src/app.js",
     "author": "Luuxis",
