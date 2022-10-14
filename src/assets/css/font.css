@@ -10,7 +10,7 @@
 
 @font-face {
     font-family: 'Montserrat-Bold';
-    font-style: normal;
+    font-style: bold;
     font-weight: 700;
     font-display: swap;
     src: local('Montserrat Bold'), local('Montserrat-Bold'), url('../fonts/Montserrat-Bold.woff2') format('woff2');
