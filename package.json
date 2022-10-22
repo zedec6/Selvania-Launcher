@@ -1,7 +1,7 @@
 {
     "name": "PokemonBrasil-Launcher",
     "preductname": "PokeBrasil Launcher",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Launcher do Pokémon Brasil",
     "main": "src/app.js",
     "author": "Luuxis",
@@ -25,7 +25,7 @@
     },
     "devDependencies": {
         "cross-env": "^7.0.3",
-        "electron": "^20.0.0",
+        "electron": "^6.1.12",
         "electron-builder": "^23.0.3",
         "nodemon": "^2.0.16"
     },
