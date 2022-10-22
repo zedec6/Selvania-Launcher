@@ -115,7 +115,7 @@ class Settings {
         });
 
         document.querySelector(".path-button-reset").addEventListener("click", () => {
-            path.value = 'Utiliser la version de java livre avec le launcher';
+            path.value = 'Use a versão do java fornecida com o launcher';
             file.value = '';
             this.database.update({ uuid: "1234", path: false }, 'java-path');
         });
