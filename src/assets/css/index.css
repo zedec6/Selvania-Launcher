@@ -3,6 +3,10 @@
     --main-color: #9d2ffa;
     --main-bg: #1b1b1b;
 }
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 body {
     background-color: var(--main-bg);
     font-family: "Montserrat";

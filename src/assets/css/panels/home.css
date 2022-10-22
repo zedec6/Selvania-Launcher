@@ -110,7 +110,7 @@
     padding: 0px 20px!important;
     border: none;
     color: #121212;
-    font: normal normal bold 19px/29px Montserrat-Bold;
+    font: normal normal bold 19px/29px Montserrat;
     text-transform: uppercase;
     cursor: pointer;
     transition: .5s;
@@ -273,7 +273,7 @@
 
 .info-list {
     position: relative;
-    width: 75vh;
+    width: 65vh;
     padding-left: 1rem;
     background: none;
 }

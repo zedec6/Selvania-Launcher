@@ -66,8 +66,8 @@ class Settings {
         let totalMem = Math.trunc(os.totalmem() / 1073741824 * 10) / 10;
         let freeMem = Math.trunc(os.freemem() / 1073741824 * 10) / 10;
 
-        document.getElementById("total-ram").textContent = `${totalMem} Gigabyte`;
-        document.getElementById("free-ram").textContent = `${freeMem} Gigabyte`;
+        document.getElementById("total-ram").textContent = `${totalMem} Go`;
+        document.getElementById("free-ram").textContent = `${freeMem} Go`;
 
         let sliderDiv = document.querySelector(".memory-slider");
         sliderDiv.setAttribute("max", Math.trunc((80 * totalMem) / 100));
@@ -78,12 +78,12 @@ class Settings {
         let minSpan = document.querySelector(".slider-touch-left span");
         let maxSpan = document.querySelector(".slider-touch-right span");
 
-        minSpan.setAttribute("value", `${ram.ramMin} Gigabyte`);
-        maxSpan.setAttribute("value", `${ram.ramMax} Gigabyte`);
+        minSpan.setAttribute("value", `${ram.ramMin} Go`);
+        maxSpan.setAttribute("value", `${ram.ramMax} Go`);
 
         slider.on("change", (min, max) => {
-            minSpan.setAttribute("value", `${min} Gigabyte`);
-            maxSpan.setAttribute("value", `${max} Gigabyte`);
+            minSpan.setAttribute("value", `${min} Go`);
+            maxSpan.setAttribute("value", `${max} Go`);
             this.database.update({ uuid: "1234", ramMin: `${min}`, ramMax: `${max}` }, 'ram')
         });
     }
@@ -115,7 +115,7 @@ class Settings {
         });
 
         document.querySelector(".path-button-reset").addEventListener("click", () => {
-            path.value = 'Use a versão do java fornecida com o launcher';
+            path.value = 'Utiliser la version de java livre avec le launcher';
             file.value = '';
             this.database.update({ uuid: "1234", path: false }, 'java-path');
         });
