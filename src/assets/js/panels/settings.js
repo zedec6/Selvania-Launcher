@@ -1,9 +1,3 @@
-/**
- * @author Luuxis
- * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0/
- */
-
-'use strict';
 
 import { database, changePanel, accountSelect, Slider } from '../utils.js';
 const dataDirectory = process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Application Support' : process.env.HOME)
@@ -23,10 +17,12 @@ class Settings {
         this.initJavaArgs();
         this.initResolution();
         this.initLauncherSettings();
+
     }
 
+
     initAccount() {
-        document.querySelector('.accounts').addEventListener('click', async(e) => {
+        document.querySelector('.accounts').addEventListener('click', async (e) => {
             let uuid = e.target.id;
             let selectedaccount = await this.database.get('1234', 'accounts-selected');
 
@@ -53,12 +49,54 @@ class Settings {
                     accountSelect(uuid)
                 }
             }
-        })
+        });
 
         document.querySelector('.add-account').addEventListener('click', () => {
             document.querySelector(".cancel-login").style.display = "contents";
             changePanel("login");
-        })
+        });
+
+        // Função para criar um novo perfil de conta na interface
+        async function createAccountProfile(accountData) {
+            const accountsContainer = document.querySelector('.accounts');
+
+            const accountDiv = document.createElement('div');
+            accountDiv.classList.add('account');
+            accountDiv.id = accountData.uuid;
+
+            const accountName = document.createElement('span');
+            accountName.classList.add('account-name');
+            accountName.textContent = accountData.name;
+
+            const deleteButton = document.createElement('button');
+            deleteButton.classList.add('account-delete');
+            deleteButton.textContent = 'Delete';
+            deleteButton.addEventListener('click', async (e) => {
+                this.database.delete(accountData.uuid, 'accounts');
+                accountsContainer.removeChild(e.target.parentElement);
+
+                const selectedAccount = await this.database.get('1234', 'accounts-selected');
+                if (e.target.parentElement.id === selectedAccount.value.selected) {
+                    const allAccounts = await this.database.getAll('accounts');
+                    const uuid = allAccounts.length > 0 ? allAccounts[0].value.uuid : null;
+                    this.database.update({ uuid: '1234', selected: uuid }, 'accounts-selected');
+                    accountSelect(uuid);
+                }
+            });
+
+            accountDiv.appendChild(accountName);
+            accountDiv.appendChild(deleteButton);
+
+            accountsContainer.appendChild(accountDiv);
+        }
+
+        // Chama a função createAccountProfile() para cada conta existente no banco de dados
+        (async () => {
+            const allAccounts = await this.database.getAll('accounts');
+            for (const account of allAccounts) {
+                createAccountProfile(account.value);
+            }
+        })();
     }
 
     async initRam() {
@@ -97,7 +135,7 @@ class Settings {
         path.value = javaPath;
         let file = document.querySelector(".path-file");
 
-        document.querySelector(".path-button").addEventListener("click", async() => {
+        document.querySelector(".path-button").addEventListener("click", async () => {
             file.value = '';
             file.click();
             await new Promise((resolve) => {
@@ -126,13 +164,13 @@ class Settings {
         let argsInput = document.querySelector(".args-settings");
 
         if (javaArgsDatabase?.length) argsInput.value = javaArgsDatabase.join(' ');
-    
+
         document.querySelector('.args-settings').addEventListener('change', () => {
             let args = [];
             try {
                 if (argsInput.value.length) {
                     argsInput = argsInput.value.trim().split(/\s+/)
-                    for(let arg of argsInput) {
+                    for (let arg of argsInput) {
                         if (arg === '') continue;
                         if (arg === '--server' || arg === '--port') continue;
                         args.push(arg);
@@ -147,18 +185,18 @@ class Settings {
     async initResolution() {
         let resolutionDatabase = (await this.database.get('1234', 'screen'))?.value?.screen;
         let resolution = resolutionDatabase ? resolutionDatabase : { width: "1280", height: "720" };
-        
+
         let width = document.querySelector(".width-size");
         width.value = resolution.width;
-        
+
         let height = document.querySelector(".height-size");
         height.value = resolution.height;
-    
+
         let select = document.getElementById("select");
         select.addEventListener("change", (event) => {
             let resolution = select.options[select.options.selectedIndex].value.split(" x ");
             select.options.selectedIndex = 0;
-            
+
             width.value = resolution[0];
             height.value = resolution[1];
             this.database.update({ uuid: "1234", screen: { width: resolution[0], height: resolution[1] } }, 'screen');
@@ -178,40 +216,40 @@ class Settings {
         let closeAll = document.getElementById("launcher-close-all");
         let openLauncher = document.getElementById("launcher-open");
 
-        if(settingsLauncher.launcher.close === 'close-launcher') {
+        if (settingsLauncher.launcher.close === 'close-launcher') {
             closeLauncher.checked = true;
-        } else if(settingsLauncher.launcher.close === 'close-all') {
+        } else if (settingsLauncher.launcher.close === 'close-all') {
             closeAll.checked = true;
-        } else if(settingsLauncher.launcher.close === 'open-launcher') {
+        } else if (settingsLauncher.launcher.close === 'open-launcher') {
             openLauncher.checked = true;
         }
 
         closeLauncher.addEventListener("change", () => {
-            if(closeLauncher.checked) {
+            if (closeLauncher.checked) {
                 openLauncher.checked = false;
                 closeAll.checked = false;
             }
-           if(!closeLauncher.checked) closeLauncher.checked = true;
+            if (!closeLauncher.checked) closeLauncher.checked = true;
             settingsLauncher.launcher.close = 'close-launcher';
             this.database.update(settingsLauncher, 'launcher');
         })
 
         closeAll.addEventListener("change", () => {
-            if(closeAll.checked) {
+            if (closeAll.checked) {
                 closeLauncher.checked = false;
                 openLauncher.checked = false;
             }
-            if(!closeAll.checked) closeAll.checked = true;
+            if (!closeAll.checked) closeAll.checked = true;
             settingsLauncher.launcher.close = 'close-all';
             this.database.update(settingsLauncher, 'launcher');
         })
 
         openLauncher.addEventListener("change", () => {
-            if(openLauncher.checked) {
+            if (openLauncher.checked) {
                 closeLauncher.checked = false;
                 closeAll.checked = false;
             }
-            if(!openLauncher.checked) openLauncher.checked = true;
+            if (!openLauncher.checked) openLauncher.checked = true;
             settingsLauncher.launcher.close = 'open-launcher';
             this.database.update(settingsLauncher, 'launcher');
         })
@@ -268,6 +306,18 @@ class Settings {
         if (!(await this.database.getAll('screen')).length) {
             this.database.add({ uuid: "1234", screen: { width: "1280", height: "720" } }, 'screen')
         }
+
+        document.getElementById("open-settings").addEventListener("click", () => {
+            this.showSettings();
+        });
+    }
+    showSettings() {
+        // Aqui você coloca o código para exibir as configurações.
+        // Por exemplo, você pode mudar a visibilidade de um elemento
+        // que contém as configurações para 'visible', ou mudar a classe
+        // do elemento para que ele seja mostrado na tela.
+        console.log("Configurações abertas!");
     }
 }
+
 export default Settings;

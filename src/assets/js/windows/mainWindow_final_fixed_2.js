@@ -20,12 +20,33 @@ function destroyWindow() {
     mainWindow = undefined;
 }
 
+
+
+app.on('ready', () => {
+    // ... All the screen related code and window creation ...
+});
+
+const display = screen.getPrimaryDisplay().workAreaSize;
+let windowWidth = Math.round(display.width * 0.8);
+let windowHeight = Math.round(display.height * 0.8);
+
+if (display.width >= 1920) {
+    windowWidth = 1280;
+    windowHeight = 720;
+} else if (display.width >= 1366) {
+    windowWidth = 1024;
+    windowHeight = 576;
+} else {
+    windowWidth = 800;
+    windowHeight = 450;
+}
 function createWindow() {
+});
     destroyWindow();
     mainWindow = new electron.BrowserWindow({
         title: pkg.preductname,
-        width: 1945,
-        height: electron.screen.getPrimaryDisplay().workAreaSize.height,
+        width: windowWidth,
+        height: windowHeight,
         minWidth: 640,
         minHeight: 560,
         resizable: true,

@@ -1,8 +1,3 @@
-/**
- * @author Luuxis
- * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0/
- */
-
 'use strict';
 
 import { logger, database, changePanel } from '../utils.js';
@@ -45,8 +40,13 @@ class Home {
                     </div>`
                 news.appendChild(blockNews);
             } else {
-                for (let News of this.news) {
-                    let date = await this.getdate(News.publish_date)
+                // Crie uma div para a linha de notícias
+                let newsRow = document.createElement('div');
+                newsRow.classList.add('news-row');
+    
+                for (let i = 0; i < 3 && i < this.news.length; i++) {
+                    let News = this.news[i];
+                    let date = await this.getdate(News.publish_date);
                     let blockNews = document.createElement('div');
                     blockNews.classList.add('news-block');
                     blockNews.innerHTML = `
@@ -60,13 +60,18 @@ class Home {
                             </div>
                         </div>
                         <div class="news-content">
+                            <div class="news-image" style="background-image: url(${News.image_url});"></div>
                             <div class="bbWrapper">
-                                <p>${News.content.replace(/\n/g, '</br>')}</p>
+                                <p>${News.content.replace(/\n/g, '<br>')}</p>
                                 <p class="news-author">Auteur,<span> ${News.author}</span></p>
                             </div>
                         </div>`
-                    news.appendChild(blockNews);
+                    newsRow.appendChild(blockNews);
                 }
+                
+    
+                // Adicione a linha de notícias ao elemento "news"
+                news.appendChild(newsRow);
             }
         } else {
             let blockNews = document.createElement('div');
@@ -87,7 +92,7 @@ class Home {
     }
 
     async initLaunch() {
-        document.querySelector('.play-btn').addEventListener('click', async() => {
+        document.querySelector('.play-btn').addEventListener('click', async () => {
             let urlpkg = pkg.user ? `${pkg.url}/${pkg.user}` : pkg.url;
             let uuid = (await this.database.get('1234', 'accounts-selected')).value;
             let account = (await this.database.get(uuid.selected, 'accounts')).value;
@@ -97,20 +102,20 @@ class Home {
             let Resolution = (await this.database.get('1234', 'screen')).value;
             let launcherSettings = (await this.database.get('1234', 'launcher')).value;
             let screen;
-
+    
             let playBtn = document.querySelector('.play-btn');
-            let info = document.querySelector(".text-download")
-            let progressBar = document.querySelector(".progress-bar")
-
+            let info = document.querySelector(".text-download");
+            let progressBar = document.querySelector(".progress-bar");
+    
             if (Resolution.screen.width == '<auto>') {
-                screen = false
+                screen = false;
             } else {
                 screen = {
                     width: Resolution.screen.width,
                     height: Resolution.screen.height
-                }
+                };
             }
-
+    
             let opts = {
                 url: this.config.game_url === "" || this.config.game_url === undefined ? `${urlpkg}/files` : this.config.game_url,
                 authenticator: account,
@@ -128,50 +133,53 @@ class Home {
                     min: `${ram.ramMin * 1024}M`,
                     max: `${ram.ramMax * 1024}M`
                 }
+            };
+    
+            playBtn.disabled = true; // Desabilitar o botão de jogar antes do download
+            playBtn.innerText = "Carregando..."; // Adicionar a mensagem de "Carregando..."
+            if (info) {
+                info.style.display = "block";
             }
-
-            playBtn.style.display = "none"
-            info.style.display = "block"
             launch.Launch(opts);
-
+    
             launch.on('progress', (DL, totDL) => {
-                progressBar.style.display = "block"
-                document.querySelector(".text-download").innerHTML = `Download ${((DL / totDL) * 100).toFixed(0)}%`
-                ipcRenderer.send('main-window-progress', {DL, totDL})
-                progressBar.value = DL;
-                progressBar.max = totDL;
-            })
-
-            launch.on('speed', (speed) => {
-                console.log(`${(speed / 1067008).toFixed(2)} Mb/s`)
-            })
-
-            launch.on('check', (e) => {
-                progressBar.style.display = "block"
-                document.querySelector(".text-download").innerHTML = `Verificando ${((DL / totDL) * 100).toFixed(0)}%`
-                progressBar.value = DL;
-                progressBar.max = totDL;
-
-            })
-
+                if (progressBar) {
+                    progressBar.style.display = "block";
+                    document.querySelector(".text-download").innerHTML = `Download ${((DL / totDL) * 100).toFixed(0)}%`;
+                    ipcRenderer.send('main-window-progress', { DL, totDL });
+                    progressBar.value = DL;
+                    progressBar.max = totDL;
+                }
+            });
+    
             launch.on('data', (e) => {
                 new logger('Minecraft', '#36b030');
-                if(launcherSettings.launcher.close === 'close-launcher') ipcRenderer.send("main-window-hide");
-                progressBar.style.display = "none"
-                info.innerHTML = `Iniciando...`
+                if (launcherSettings.launcher.close === 'close-launcher') ipcRenderer.send("main-window-hide");
+                if (progressBar) {
+                    progressBar.style.display = "none";
+                }
+                if (info) {
+                    info.innerHTML = `Iniciando...`;
+                }
                 console.log(e);
-            })
-
+                playBtn.disabled = false; // Habilitar o botão de jogar após o término do download
+                playBtn.innerText = "JOGAR"; // Voltar o texto do botão para "JOGAR"
+            });
+    
             launch.on('close', () => {
-                if(launcherSettings.launcher.close === 'close-launcher') ipcRenderer.send("main-window-show");
-                progressBar.style.display = "none"
-                info.style.display = "none"
-                playBtn.style.display = "block"
-                info.innerHTML = `Verificação`
+                if (launcherSettings.launcher.close === 'close-launcher') ipcRenderer.send("main-window-show");
+                if (progressBar) {
+                    progressBar.style.display = "none";
+                }
+                if (info) {
+                    info.style.display = "none";
+                    playBtn.style.display = "block";
+                    info.innerHTML = `Verificação`;
+                }
                 new logger('Launcher', '#7289da');
                 console.log('Close');
-            })
-        })
+            });
+        });
     }
 
     async initStatusServer() {

@@ -1,8 +1,3 @@
-/**
- * @author Luuxis
- * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0/
- */
-
 'use strict';
 const { ipcRenderer } = require('electron');
 import { config } from './utils.js';
@@ -11,6 +6,7 @@ let dev = process.env.NODE_ENV === 'dev';
 
 
 class Splash {
+
     constructor() {
         this.splash = document.querySelector(".splash");
         this.splashMessage = document.querySelector(".splash-message");
@@ -22,9 +18,13 @@ class Splash {
 
     async startAnimation() {
         let splashes = [
-            { "message": "Torne-se um treinador", "author": "PokeBrasil" },
-            { "message": "Boa sorte em sua aventura!", "author": "PokeBrasil" },
-            { "message": "Launcher em desenvolvimento", "author": "PokeBrasil" }
+            { "message": "Preparando para a jornada Pokémon!" },
+            { "message": "Lembre-se: um verdadeiro Mestre Pokémon nunca desiste!"},
+            { "message": "Reunindo todas as Pokébolas..."},
+            { "message": "Conectando-se ao Centro Pokémon..."},
+            { "message": "Espero que você tenha escolhido um bom inicial!"},
+            { "message": "Cada Pokémon é especial à sua maneira."},
+            { "message": "Lançamento do PokéBrasil: uma aventura espera por você!",}
         ]
         let splash = splashes[Math.floor(Math.random() * splashes.length)];
         this.splashMessage.textContent = splash.message;
@@ -117,3 +117,38 @@ document.addEventListener("keydown", (e) => {
     }
 })
 new Splash();
+const { app, BrowserWindow, screen } = require('electron');
+const path = require('path');
+
+let mainWindow;
+
+function createWindow() {
+    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+
+    mainWindow = new BrowserWindow({
+        width: width * 0.75, // Defina a largura da janela como 75% da largura da tela
+        height: height * 0.75, // Defina a altura da janela como 75% da altura da tela
+        webPreferences: {
+            nodeIntegration: true
+        }
+    });
+
+    // Carregar a página "home.html" usando um caminho relativo
+    mainWindow.loadFile(path.join(__dirname, 'src', 'panels', 'home.html'));
+
+    // Outras configurações do Electron
+}
+
+app.whenReady().then(() => {
+    createWindow();
+
+    app.on('activate', function () {
+        if (BrowserWindow.getAllWindows().length === 0) createWindow();
+    });
+});
+
+app.on('ready', createWindow);
+
+app.on('window-all-closed', function () {
+    if (process.platform !== 'darwin') app.quit();
+});

@@ -1,13 +1,16 @@
 @import "font.css";
-:root{
-    --main-color: #9d2ffa;
-    --main-bg: #1b1b1b;
+
+:root {
+    --main-color: #ff0000; /* Vermelho */
+    --main-bg: #1b1b1b; /* Preto */
 }
+
 * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: "Montserrat", sans-serif;
-  }
+}
+
 body {
     background-color: var(--main-bg);
     font-family: "Montserrat";
@@ -28,7 +31,7 @@ img {
     transform: translate(-50%);
     width: 320px;
     height: 170px;
-    transition: opacity .3s, top 1.5s;
+    transition: opacity 0.3s, top 1.5s;
     opacity: 0;
 }
 
@@ -100,7 +103,7 @@ progress {
     width: 189px;
     height: 10px;
     appearance: none;
-    transition: opacity .2s;
+    transition: opacity 0.2s;
     opacity: 0;
 }
 
