@@ -19,8 +19,8 @@ body {
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 80%;
-    max-width: 300px;
+    top: 0;
+    width: 300px;
     background: #0e0e0ede;
     display: flex;
     flex-direction: column;
@@ -513,17 +513,12 @@ body {
     background: none;
     color: #c4c4c473;
 }
-@media screen and (max-width: 768px) {
-    .bottom-bar-home {
-        width: 100%;
-        bottom: 0;
-        top: auto;
-        height: 150px;
-    }
+@keyframes ellipsisPulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
 }
 
-@media screen and (max-width: 768px) {
-    .player-content {
-        margin: 10px;
-    }
+.ellipsis-animation {
+    animation: ellipsisPulse 1s infinite;
 }

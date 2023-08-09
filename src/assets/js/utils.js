@@ -42,9 +42,12 @@ div.innerHTML = `
 function accountSelect(uuid) {
     let account = document.getElementById(uuid);
     let pseudo = account.querySelector('.account-name').innerText;
-    let activeAccount = document.querySelector('.active-account')
-
-    if (activeAccount) activeAccount.classList.toggle('active-account');
+    
+    // Remove .active-account class from any account that has it
+    let activeAccounts = document.querySelectorAll('.active-account');
+    activeAccounts.forEach(acc => acc.classList.remove('active-account'));
+    
+    // Add .active-account class to the selected account
     account.classList.add('active-account');
     headplayer(pseudo);
 }
