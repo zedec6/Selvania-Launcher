@@ -141,7 +141,7 @@ body {
   }
   
   .categories-btn:hover {
-    background-color: #ff0409;
+    background-color: #1889e6;
   }
   
   .categories-btn:hover > div {
@@ -296,11 +296,20 @@ body {
   
  
   .icon-settings:before {
-    font-size: 35px;
-    padding-right: 10px;
-    margin-top: 70px; /* Move o ícone para baixo */
-    margin-left: -100px; /* Move o ícone para a esquerda */
-  }
+    font-size: 3em; /* Use uma unidade relativa, como 'em', para o tamanho do ícone */
+    padding-right: 0.5em; /* Use uma unidade relativa para o espaçamento à direita */
+    margin-top: 1em; /* Use uma unidade relativa para o espaço superior */
+    margin-left: -2em; /* Use uma unidade relativa para o espaço à esquerda */
+}
+
+/* Media query para ajustar o tamanho do ícone em telas menores */
+@media screen and (max-width: 600px) {
+    .icon-settings:before {
+        font-size: 2em; /* Reduza o tamanho do ícone em telas menores */
+        margin-top: 0.5em; /* Reduza o espaço superior em telas menores */
+        margin-left: -1em; /* Ajuste o espaço à esquerda em telas menores */
+    }
+}
   
   .play-content {
     position: relative;
@@ -364,10 +373,9 @@ body {
     align-items: flex-start; /* Mantendo o alinhamento no topo */
     width: 100%;
     height: 100%;
-    background-image: url(https://tcg.pokemon.com/assets/img/home/wallpapers/wallpaper-53.jpg);
+    background-image: url(https://cdn.discordapp.com/attachments/1145124163103760486/1147307104714096822/banner_launcher.png);
     background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center 60%; /* Posicionando a imagem no centro da parte inferior, mas 90% acima */
+    background-position: center center; /* Posicionando a imagem no centro horizontal e vertical */
   }
   
   .middle-bottom-content {
@@ -432,7 +440,7 @@ body {
     align-items: end;
     width: 100%;
     height: 100%;
-    background-image: url(https://pbs.twimg.com/media/EnQe5exW4AEi-dk?format=jpg&name=large);
+    /* background-image: url(https://pbs.twimg.com/media/EnQe5exW4AEi-dk?format=jpg&name=large); */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -521,4 +529,12 @@ body {
 
 .ellipsis-animation {
     animation: ellipsisPulse 1s infinite;
+}
+
+.center-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  left: 230px;
 }

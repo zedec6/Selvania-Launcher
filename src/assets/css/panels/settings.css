@@ -1,6 +1,6 @@
 :root {
-  --main-color: #f54b4e;
-  --main-color-disabled:  #fc5659;
+  --main-color: #45a0eb;
+  --main-color-disabled:  #136db8;
 }
 
 * {
@@ -42,8 +42,8 @@ body {
 }
 
 .tabs-settings-btn {
-    background: linear-gradient(45deg, #9d3232, #ba3b3b);
-    box-shadow: 27px -27px 54px #7a2727, -27px 27px 54px #e24848;
+    background: linear-gradient(45deg, #45a0eb, #136db8);
+    box-shadow: 27px -27px 54px #038afa, -27px 27px 54px #2c86d1;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -60,8 +60,8 @@ body {
     border-radius: 5px;
     width: 210px;
     height: 270px;
-    background: linear-gradient(45deg, #9d3232, #ba3b3b);
-    box-shadow: inset 27px 27px 54px #7a2727, inset -27px -27px 54px #e24848;
+    background: linear-gradient(45deg, #45a0eb, #136db8);
+    box-shadow: inset 27px 27px 54px #038afa, inset -27px -27px 54px #2c86d1;
   position: relative;
   width: 160px;  /* Aumentando a largura */
   height: 60px;  /* Aumentando a altura */
@@ -72,7 +72,7 @@ body {
   text-transform: uppercase;
   font-family: sans-serif;
   box-sizing: border-box;
-  background: linear-gradient(90deg, #8b0000, #a52a2a, #a52a2a, #b22222, #b22222, #dc143c, #dc143c, #ff0000);
+  background: linear-gradient(90deg, #038afa, #45a0eb, #008afc, #1b87e1, #7bbcf0, #1783db, #34a1fb, #559eda);
   background-size: 400%;
   border-radius: 40px;  /* Ajustando o raio da borda para manter a proporção */
   z-index: 1;
@@ -103,7 +103,7 @@ body {
   right: -5px;
   bottom: -5px;
   z-index: -1;
-  background: linear-gradient(90deg, #8b0000, #a52a2a, #a52a2a, #b22222, #b22222, #dc143c, #dc143c, #ff0000);
+  background: linear-gradient(90deg, #038afa, #45a0eb, #008afc, #1b87e1, #7bbcf0, #1783db, #34a1fb, #559eda);
   border-radius: 45px;  /* Ajustando o raio da borda conforme a nova proporção */
   filter: blur(20px);
   opacity: 0;
@@ -208,7 +208,7 @@ body {
   font-weight: bold;
   font-size: 18px;
   color: #fff;
-  background: linear-gradient(90deg, #9d3232, #ba3b3b);
+  background: linear-gradient(90deg, #038afa, #45a0eb);
   box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.7);
   margin: 20px 0;
   margin-bottom: 10px;
@@ -270,7 +270,7 @@ body {
 }
 
 .account-delete {
-  color: #f73434;
+  color: #038afa;
   font-size: 24px;
   background: transparent;
   width: 40px;
@@ -280,15 +280,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #f73434;
+  border: 2px solid #038afa;
   transition: all .5s;
   margin-top: 10px;
 }
 
 .account-delete:hover {
-  background-color: #f73434;
+  background-color: #038afa;
   color: #fff;
-  border-color: #f73434;
+  border-color: #038afa;
   animation: ease-in-out;
 }
 
@@ -303,7 +303,7 @@ body {
   overflow: hidden;
   z-index: 1;
   display: flex;
-  background: linear-gradient(45deg, #9d3232, #ba3b3b); /* Gradiente linear com as cores desejadas */
+  background: linear-gradient(45deg, #1889e6, #88c3f3); /* Gradiente linear com as cores desejadas */
   border-radius: 15px;
   color: #fff;
   transition: .5s;
@@ -328,7 +328,7 @@ body {
 .blob:nth-child(2) {
   top: -10px;
   left: -320px;
-  background-color: #9d3232;
+  background-color: #1889e6;
   animation: wave 1.5s infinite alternate;
   animation-delay: 0s;
 }
@@ -336,7 +336,7 @@ body {
 .blob:nth-child(3) {
   top: 0px;
   left: -360px;
-  background-color: #ba3b3b;
+  background-color: #1889e6;
   animation: wave 1.5s infinite alternate;
   animation-delay: 0.5s;
 }
@@ -344,7 +344,7 @@ body {
 .blob:nth-child(4) {
   top: 180px;
   left: -750px;
-  background-color: #9d3232;
+  background-color: #1889e6;
   animation: wave 1.5s infinite alternate;
   animation-delay: 1s;
 }
@@ -352,7 +352,7 @@ body {
 .blob:nth-child(5) {
   top: 230px;
   left: -820px;
-  background-color: #ba3b3b;
+  background-color: #1889e6;
   animation: wave 1.5s infinite alternate;
   animation-delay: 1.5s;
 }

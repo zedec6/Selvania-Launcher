@@ -22,12 +22,23 @@ function destroyWindow() {
 
 function createWindow() {
     destroyWindow();
+
+    const { screen } = electron;
+    const primaryDisplay = screen.getPrimaryDisplay();
+    const screenWidth = primaryDisplay.workAreaSize.width;
+    const screenHeight = primaryDisplay.workAreaSize.height;
+
+    // Defina as dimensões da janela com base na proporção desejada
+    const aspectRatio = 16 / 9; // Por exemplo, uma proporção 16:9
+    const windowWidth = Math.min(screenWidth * 0.8, 1920); // Largura máxima de 1920 pixels ou 80% da largura do monitor
+    const windowHeight = windowWidth / aspectRatio;
+
     mainWindow = new electron.BrowserWindow({
-        title: pkg.preductname,
-        width: 1945,
-        height: electron.screen.getPrimaryDisplay().workAreaSize.height,
+        title: pkg.productName,
+        width: windowWidth,
+        height: windowHeight,
         minWidth: 640,
-        minHeight: 560,
+        minHeight: 360, // Mantenha uma proporção 16:9 com altura mínima
         resizable: true,
         icon: `./src/assets/images/icone.${os.platform() === "win32" ? "ico" : "png"}`,
         transparent: os.platform() === 'win32',
@@ -38,16 +49,17 @@ function createWindow() {
             nodeIntegration: true
         },
     });
+
     electron.Menu.setApplicationMenu(null);
     mainWindow.setMenuBarVisibility(false);
     mainWindow.loadFile(path.join(electron.app.getAppPath(), 'src', 'launcher.html'));
+    
     mainWindow.once('ready-to-show', () => {
         if (mainWindow) {
             mainWindow.show();
         }
     });
 }
-
 module.exports = {
     getWindow,
     createWindow,
