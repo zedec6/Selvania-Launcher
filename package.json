@@ -1,7 +1,7 @@
 {
     "name": "pokebrasil-launcher",
     "preductname": "PokeBrasil Launcher",
-    "version": "2.2.3",
+    "version": "2.3.0",
     "description": "Launcher do Pokémon Brasil",
     "main": "src/app.js",
     "author": "Luuxis",
